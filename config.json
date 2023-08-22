@@ -1,0 +1,16 @@
+{
+    "pixels": {
+        "item": "Quantidade de Pixels da Imagem no Eixo X(altura), Eixo Y (Altura) e Tamanho de um pixel",
+        "X": 989,
+        "Y": 989,
+        "tamanho": 30
+    },
+    "arquivo": {
+        "nome_comum": "lva 3cm 29.9µm_al+cu__rec_bin0",
+        "primeira_imagem": 187,
+        "ultima_imagem": 201,
+        "extensao": ".bmp",
+        "quantidade": 15,
+        "tipos_aceitos": ".bmp e .tif"
+    }
+}

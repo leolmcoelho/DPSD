@@ -1,0 +1,19 @@
+Arquivo de Configura��o do Stack
+
+Quantidade de Pixels da Imagem no Eixo X (largura):
+989
+Quantidade de Pixels da Imagem no Eixo Y (altura):
+989
+Quantidade de Imagens
+15
+Tamanho do Pixel (um):
+30
+
+Nome em Comum dos Arquivos de Imagem:
+lva 3cm 29.9�m_al+cu__rec_bin0
+N�mero da Primeira Imagem:
+187
+N�mero da �ltima Imagem:
+201
+Extens�o dos Arquivos de Imagem (.bmp/.tif):
+.bmp

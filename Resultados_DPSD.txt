@@ -1,0 +1,12 @@
+Resultados de PSD da amostra LVA na resolução de 12 um.
+Volume Total da Amostra: 0
+Porosidade Digital da Amostra (método 1): nan
+
+DADOS DE DISTRIBUIÇÃO DE TAMANHO DE POROS
+O maior diâmetro equivalente é de: -0.5
+Diâmetros Equivalentes:
+D = [0];
+Voxels por Diâmetros Equivalentes:
+V(DE) = [0];
+Distribuição de Tamanho de Poros:
+PSD = [0];
