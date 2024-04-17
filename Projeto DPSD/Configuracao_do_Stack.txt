@@ -1,0 +1,8 @@
+Quantidade de Pixels da Imagem no Eixo X (largura): 989
+Quantidade de Pixels da Imagem no Eixo Y (altura): 989
+Quantidade de Imagens: 15
+Tamanho do Pixel (um): 30
+Nome em Comum dos Arquivos de Imagem: lva3cm29.9µm_al+cu__rec_bin0
+Número da Primeira Imagem: 187
+Número da Última Imagem: 201
+Extensão dos Arquivos de Imagem (.bmp/.tif): .bmp

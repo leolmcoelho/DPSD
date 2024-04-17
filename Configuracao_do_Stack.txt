@@ -1,0 +1,19 @@
+Arquivo de Configura��o do Stack
+
+Quantidade de Pixels da Imagem no Eixo X (largura):
+1209
+Quantidade de Pixels da Imagem no Eixo Y (altura):
+1259
+Quantidade de Imagens
+3009
+Tamanho do Pixel (um):
+20
+
+Nome em Comum dos Arquivos de Imagem:
+F2778_20um
+N�mero da Primeira Imagem:
+0000
+N�mero da �ltima Imagem:
+3008
+Extens�o dos Arquivos de Imagem (.bmp/.tif):
+.tif
