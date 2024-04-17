@@ -1,6 +1,9 @@
 import tkinter as tk
+from tkinter import ttk
 from tkinter import messagebox, filedialog
-
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+import os, sys
 
 class ConfigGUI(tk.Tk):
     def __init__(self):
@@ -25,29 +28,35 @@ class ConfigGUI(tk.Tk):
         first_entry = tk.Entry(self)
         last_label = tk.Label(self, text='Número da Última Imagem:')
         last_entry = tk.Entry(self)
-        extension_label = tk.Label(self, text='Extensão dos Arquivos de Imagem (.bmp/.tif):')
-        extension_entry = tk.Entry(self)
+
+        extension_label = tk.Label(self, text='Extensão dos Arquivos de Imagem:')
+        extension_combobox = ttk.Combobox(self, values=['.bmp', '.tif'],  state='readonly')
+        
         open_button = tk.Button(self, text='Abrir Configuração', command=self.open_config)
         save_button = tk.Button(self, text='Salvar Configuração', command=self.save_config)
 
-        width_label.grid(row=0, column=0, sticky=tk.E)
-        width_entry.grid(row=0, column=1)
-        height_label.grid(row=1, column=0, sticky=tk.E)
-        height_entry.grid(row=1, column=1)
-        count_label.grid(row=2, column=0, sticky=tk.E)
-        count_entry.grid(row=2, column=1)
-        size_label.grid(row=3, column=0, sticky=tk.E)
-        size_entry.grid(row=3, column=1)
-        name_label.grid(row=4, column=0, sticky=tk.E)
-        name_entry.grid(row=4, column=1)
-        first_label.grid(row=5, column=0, sticky=tk.E)
-        first_entry.grid(row=5, column=1)
-        last_label.grid(row=6, column=0, sticky=tk.E)
-        last_entry.grid(row=6, column=1)
-        extension_label.grid(row=7, column=0, sticky=tk.E)
-        extension_entry.grid(row=7, column=1)
-        open_button.grid(row=8, column=0)
-        save_button.grid(row=8, column=1)
+       
+        padx_value = 10
+        pady_value = 7
+
+        width_label.grid(row=0, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        width_entry.grid(row=0, column=1, padx=padx_value, pady=pady_value)
+        height_label.grid(row=1, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        height_entry.grid(row=1, column=1, padx=padx_value, pady=pady_value)
+        count_label.grid(row=2, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        count_entry.grid(row=2, column=1, padx=padx_value, pady=pady_value)
+        size_label.grid(row=3, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        size_entry.grid(row=3, column=1, padx=padx_value, pady=pady_value)
+        name_label.grid(row=4, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        name_entry.grid(row=4, column=1, padx=padx_value, pady=pady_value)
+        first_label.grid(row=5, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        first_entry.grid(row=5, column=1, padx=padx_value, pady=pady_value)
+        last_label.grid(row=6, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        last_entry.grid(row=6, column=1, padx=padx_value, pady=pady_value)
+        extension_label.grid(row=7, column=0, sticky=tk.E, padx=padx_value, pady=pady_value)
+        extension_combobox.grid(row=7, column=1, padx=padx_value, pady=pady_value)
+        open_button.grid(row=8, column=0, padx=padx_value, pady=pady_value)
+        save_button.grid(row=8, column=1, padx=padx_value, pady=pady_value)
 
         # Store the entry fields as instance attributes
         self.width_entry = width_entry
@@ -57,7 +66,7 @@ class ConfigGUI(tk.Tk):
         self.name_entry = name_entry
         self.first_entry = first_entry
         self.last_entry = last_entry
-        self.extension_entry = extension_entry
+        self.extension_entry = extension_combobox
 
     def open_config(self):
         self.config.read_config()
@@ -205,9 +214,25 @@ class Config:
         self.extension = None
 
 
+class ReloadHandler(FileSystemEventHandler):
+    def __init__(self, app):
+        super().__init__()
+        self.app = app
+
+    def on_any_event(self, event):
+        if event.src_path.endswith(".py"):
+            print("Reloading...")
+            os.execv(sys.executable, ['python'] + sys.argv)
+
 if __name__ == '__main__':
-    app = ConfigGUI()
-    app.mainloop()
+    try:
+        app = ConfigGUI()
+        observer = Observer()
+        observer.schedule(ReloadHandler(app), path='.', recursive=True)
+        observer.start()
+        app.mainloop()
+    except Exception as e:
+        print("An error occurred:", e)
     # config = Config()
     # config.read_config()
     #
